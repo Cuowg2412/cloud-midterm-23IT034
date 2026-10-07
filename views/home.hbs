@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head><title>Quản Lý Sách Đám Mây</title></head>
+<body style="font-family: Arial, sans-serif; margin: 20px;">
+    
+    <h2 style="color: blue;">Thêm Sách Mới</h2>
+    <p><i>(Bảo mật: Mã sách bắt buộc phải bắt đầu bằng 3 số cuối là <b>034</b>)</i></p>
+    
+    <form action="/add" method="POST">
+        <b>Mã sách:</b> <input type="text" name="code" required><br><br>
+        <b>Tên sách:</b> <input type="text" name="name" required><br><br>
+        <b>Giá gốc:</b> <input type="number" name="price" required><br><br>
+        <button type="submit" style="padding: 10px; background-color: green; color: white;">Thêm vào Đám Mây</button>
+    </form>
+
+    <hr>
+    
+    <h2 style="color: darkred;">Danh Sách Trên Đám Mây</h2>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr style="background-color: #f2f2f2;">
+            <th>Mã sách</th>
+            <th>Tên sách</th>
+            <th>Giá gốc</th>
+            <th>Giá sau VAT (8%)</th>
+        </tr>
+        {{#each books}}
+        <tr>
+            <td>{{this.code}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.priceBeforeTax}}</td>
+            <td style="color: red; font-weight: bold;">{{this.priceAfterTax}}</td>
+        </tr>
+        {{/each}}
+    </table>
+
+    <br><hr>
+    
+    <footer>
+        <p><b>Sinh viên thực hiện:</b> Nguyễn Văn Cường - <b>MSSV:</b> 23IT034</p>
+        <p><b>Mức VAT áp dụng tự động:</b> 8%</p>
+    </footer>
+
+</body>
+</html>
